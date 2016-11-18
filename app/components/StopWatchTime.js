@@ -3,6 +3,8 @@
  * Import Node Modules
  */
 
+import formatTime from 'minutes-seconds-milliseconds';
+
 import React, {Component} from 'react';
 
 import {
@@ -29,7 +31,7 @@ export default class StopWatchTime extends Component {
     return(
       <View style={[this.props.style, style.container]}>
         <Text style={style.stopWatchTime}>
-          {this.props.getTimeElapsed() || "00:00.00"}
+          {formatTime(this.props.getTimeElapsed())}
         </Text>
       </View>
     )
