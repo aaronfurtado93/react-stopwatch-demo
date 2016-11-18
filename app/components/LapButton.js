@@ -14,14 +14,14 @@ import {
 
 export default class LapButton extends Component {
   handleLap () {
-    
+    console.log("LapButton pressed");
   }
 
   render() {
     return(
         <TouchableHighlight
           underlayColor="lightgray"
-          style={style.container}
+          style={style.lapButton}
           onPress={this.handleLap}>
           <Text>
             Lap
@@ -32,7 +32,7 @@ export default class LapButton extends Component {
 }
 
 const style = StyleSheet.create({
-  container: {
+  lapButton: {
     width: 100,
     height: 100,
     borderColor: "#000",

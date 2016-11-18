@@ -14,14 +14,14 @@ import {
 
 export default class StartStopButton extends Component {
   handleStartStopPress () {
-
+    console.log("StartStopButton pressed");
   }
 
   render() {
     return(
       <TouchableHighlight
         underlayColor="lightgray"
-        style={style.container}
+        style={style.startStopButton}
         onPress={this.handleStartStopPress}>
         <Text>
           Start
@@ -32,7 +32,7 @@ export default class StartStopButton extends Component {
 }
 
 const style = StyleSheet.create({
-  container: {
+  startStopButton: {
     width: 100,
     height: 100,
     borderColor: "#000",
