@@ -30,8 +30,13 @@ export default class WatchView extends Component {
   render() {
     return (
       <View style={this.props.style}>
-        <StopWatchTime style={style.stopWatchTime}/>
-        <ControlButtonsView style={style.controlButtonsView}/>
+        <StopWatchTime style={style.stopWatchTime}
+          getTimeElapsed={this.props.getTimeElapsed.bind(this)}
+          />
+        <ControlButtonsView style={style.controlButtonsView}
+          getTimeElapsed={this.props.getTimeElapsed.bind(this)}
+          setTimeElapsed={this.props.setTimeElapsed.bind(this)}
+          />
       </View>
     );
   }

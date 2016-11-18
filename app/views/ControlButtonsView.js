@@ -29,8 +29,14 @@ export default class ControlButtonsView extends Component {
   render() {
     return (
       <View style={[this.props.style, style.container]}>
-        <StartStopButton />
-        <LapButton />
+        <StartStopButton
+          getTimeElapsed={this.props.getTimeElapsed.bind(this)}
+          setTimeElapsed={this.props.setTimeElapsed.bind(this)}
+          />
+        <LapButton
+          getTimeElapsed={this.props.getTimeElapsed.bind(this)}
+          setTimeElapsed={this.props.setTimeElapsed.bind(this)}
+          />
       </View>
     )
   }

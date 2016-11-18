@@ -26,10 +26,29 @@ import LapView from '../views/LapView.js';
  */
 
 export default class MainView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      timeElapsed: null
+    };
+  }
+
+  getTimeElapsed() {
+    return this.state.timeElapsed;
+  }
+
+  setTimeElapsed(time) {
+    this.setState({
+      timeElapsed: time
+    });
+  }
+
   render() {
     return (
       <View style={style.container}>
-        <WatchView style={style.watchView}/>
+        <WatchView style={style.watchView}
+          getTimeElapsed={this.getTimeElapsed.bind(this)}
+          setTimeElapsed={this.setTimeElapsed.bind(this)}/>
         <LapView style={style.lapView}/>
       </View>
     );

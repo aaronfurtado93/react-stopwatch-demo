@@ -29,7 +29,7 @@ export default class StopWatchTime extends Component {
     return(
       <View style={[this.props.style, style.container]}>
         <Text style={style.stopWatchTime}>
-          00:00.00
+          {this.props.getTimeElapsed() || "00:00.00"}
         </Text>
       </View>
     )

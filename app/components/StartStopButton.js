@@ -13,18 +13,51 @@ import {
 } from 'react-native';
 
 export default class StartStopButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isRunning: false
+    };
+  }
+
+  startStopButtonColor() {
+    if (this.state.isRunning) {
+      return {
+        borderColor: "red"
+      };
+    }
+    return {
+      borderColor: "green"
+    };
+  }
+
   handleStartStopPress () {
     console.log("StartStopButton pressed");
+
+    if (this.state.isRunning) {
+      this.setState({
+        isRunning: false
+      });
+
+      return;
+    }
+
+    this.setState({
+      isRunning: true
+    });
   }
 
   render() {
     return(
       <TouchableHighlight
         underlayColor="lightgray"
-        style={style.startStopButton}
-        onPress={this.handleStartStopPress}>
+        style={[
+          style.startStopButton,
+          this.startStopButtonColor()
+        ]}
+        onPress={this.handleStartStopPress.bind(this)}>
         <Text>
-          Start
+          {this.state.isRunning ? "Stop" : "Start"}
         </Text>
       </TouchableHighlight>
     )
@@ -35,7 +68,6 @@ const style = StyleSheet.create({
   startStopButton: {
     width: 100,
     height: 100,
-    borderColor: "#000",
     borderWidth: 3,
     borderRadius: 50,
     justifyContent: "center",
