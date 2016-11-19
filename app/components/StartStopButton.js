@@ -35,20 +35,20 @@ export default class StartStopButton extends Component {
     console.log("StartStopButton pressed");
 
     if (this.state.isRunning) {
-      this.setState({
-        isRunning: false,
-        startTime: null
-      });
+      clearInterval(this.interval);
 
-      this.props.setTimeElapsed("Stopped");
+      this.setState({
+        isRunning: false
+      });
 
       return;
     }
 
-    let startTime = new Date();
+    this.props.setStartTime();
+    this.props.setLapTimes([]);
 
-    setInterval(() => {
-      this.props.setTimeElapsed(new Date() - startTime);
+    this.interval = setInterval(() => {
+      this.props.setTimeElapsed(new Date() - this.props.getStartTime());
     }, 30)
 
     this.setState({

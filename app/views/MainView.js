@@ -29,7 +29,8 @@ export default class MainView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timeElapsed: null
+      timeElapsed: null,
+      lapTimes: []
     };
   }
 
@@ -43,13 +44,28 @@ export default class MainView extends Component {
     });
   }
 
+  getLapTimes(lapTimes) {
+    return this.state.lapTimes;
+  }
+
+  setLapTimes(lapTimes) {
+    this.setState({
+      lapTimes: lapTimes
+    });
+  }
+
   render() {
     return (
       <View style={style.container}>
         <WatchView style={style.watchView}
           getTimeElapsed={this.getTimeElapsed.bind(this)}
-          setTimeElapsed={this.setTimeElapsed.bind(this)}/>
-        <LapView style={style.lapView}/>
+          setTimeElapsed={this.setTimeElapsed.bind(this)}
+          setLapTimes={this.setLapTimes.bind(this)}
+          getLapTimes={this.getLapTimes.bind(this)}
+          />
+        <LapView style={style.lapView}
+          lapTimes={this.state.lapTimes}
+          />
       </View>
     );
   }

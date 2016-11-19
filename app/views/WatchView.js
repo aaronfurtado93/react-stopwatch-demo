@@ -36,6 +36,8 @@ export default class WatchView extends Component {
         <ControlButtonsView style={style.controlButtonsView}
           getTimeElapsed={this.props.getTimeElapsed.bind(this)}
           setTimeElapsed={this.props.setTimeElapsed.bind(this)}
+          setLapTimes={this.props.setLapTimes.bind(this)}
+          getLapTimes={this.props.getLapTimes.bind(this)}
           />
       </View>
     );

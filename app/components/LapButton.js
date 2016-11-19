@@ -14,7 +14,13 @@ import {
 
 export default class LapButton extends Component {
   handleLap () {
-    console.log("LapButton pressed");
+    let lapTimes = this.props.getLapTimes();
+
+    lapTimes.push(this.props.getTimeElapsed());
+
+    this.props.setLapTimes(lapTimes);
+
+    this.props.setStartTime();
   }
 
   render() {
@@ -22,7 +28,7 @@ export default class LapButton extends Component {
         <TouchableHighlight
           underlayColor="lightgray"
           style={style.lapButton}
-          onPress={this.handleLap}>
+          onPress={this.handleLap.bind(this)}>
           <Text>
             Lap
           </Text>

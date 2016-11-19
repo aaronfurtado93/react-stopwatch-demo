@@ -10,13 +10,13 @@ import {
   Text
 } from 'react-native';
 
+import LapTime from '../components/LapTime.js';
+
 export default class LapView extends Component {
   render() {
     return(
       <View style={this.props.style}>
-        <Text>
-          List of Laps here...
-        </Text>
+        {this.props.lapTimes.map((lapTime, index) => <LapTime key={index} id={index} lapTime={lapTime}/>)}
       </View>
     )
   }

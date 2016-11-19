@@ -26,16 +26,37 @@ import LapButton from '../components/LapButton.js';
  */
 
 export default class ControlButtonsView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      startTime: null
+    };
+  }
+
+  getStartTime() {
+    return this.state.startTime;
+  }
+
+  setStartTime() {
+    this.setState({
+      startTime: new Date()
+    })
+  }
+
   render() {
     return (
       <View style={[this.props.style, style.container]}>
         <StartStopButton
-          getTimeElapsed={this.props.getTimeElapsed.bind(this)}
+          getStartTime={this.getStartTime.bind(this)}
+          setStartTime={this.setStartTime.bind(this)}
           setTimeElapsed={this.props.setTimeElapsed.bind(this)}
+          setLapTimes={this.props.setLapTimes.bind(this)}
           />
         <LapButton
+          setStartTime={this.setStartTime.bind(this)}
           getTimeElapsed={this.props.getTimeElapsed.bind(this)}
-          setTimeElapsed={this.props.setTimeElapsed.bind(this)}
+          setLapTimes={this.props.setLapTimes.bind(this)}
+          getLapTimes={this.props.getLapTimes.bind(this)}
           />
       </View>
     )
