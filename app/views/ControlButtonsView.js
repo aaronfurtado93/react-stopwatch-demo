@@ -29,8 +29,19 @@ export default class ControlButtonsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isRunning: false,
       startTime: null
     };
+  }
+
+  getRunningState() {
+    return this.state.isRunning;
+  }
+
+  setRunningState(newState) {
+    this.setState({
+      isRunning: newState
+    });
   }
 
   getStartTime() {
@@ -51,12 +62,15 @@ export default class ControlButtonsView extends Component {
           setStartTime={this.setStartTime.bind(this)}
           setTimeElapsed={this.props.setTimeElapsed.bind(this)}
           setLapTimes={this.props.setLapTimes.bind(this)}
+          getRunningState={this.getRunningState.bind(this)}
+          setRunningState={this.setRunningState.bind(this)}
           />
         <LapButton
           setStartTime={this.setStartTime.bind(this)}
           getTimeElapsed={this.props.getTimeElapsed.bind(this)}
           setLapTimes={this.props.setLapTimes.bind(this)}
           getLapTimes={this.props.getLapTimes.bind(this)}
+          getRunningState={this.getRunningState.bind(this)}
           />
       </View>
     )

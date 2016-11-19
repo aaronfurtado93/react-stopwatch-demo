@@ -14,13 +14,15 @@ import {
 
 export default class LapButton extends Component {
   handleLap () {
-    let lapTimes = this.props.getLapTimes();
+    if (this.props.getRunningState()) {      
+      let lapTimes = this.props.getLapTimes();
 
-    lapTimes.push(this.props.getTimeElapsed());
+      lapTimes.push(this.props.getTimeElapsed());
 
-    this.props.setLapTimes(lapTimes);
+      this.props.setLapTimes(lapTimes);
 
-    this.props.setStartTime();
+      this.props.setStartTime();
+    }
   }
 
   render() {

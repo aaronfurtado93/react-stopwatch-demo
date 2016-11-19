@@ -15,13 +15,10 @@ import {
 export default class StartStopButton extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isRunning: false
-    };
   }
 
   startStopButtonColor() {
-    if (this.state.isRunning) {
+    if (this.props.getRunningState()) {
       return {
         borderColor: "red"
       };
@@ -34,12 +31,10 @@ export default class StartStopButton extends Component {
   handleStartStopPress () {
     console.log("StartStopButton pressed");
 
-    if (this.state.isRunning) {
+    if (this.props.getRunningState()) {
       clearInterval(this.interval);
 
-      this.setState({
-        isRunning: false
-      });
+      this.props.setRunningState(false);
 
       return;
     }
@@ -51,9 +46,7 @@ export default class StartStopButton extends Component {
       this.props.setTimeElapsed(new Date() - this.props.getStartTime());
     }, 30)
 
-    this.setState({
-      isRunning: true
-    });
+    this.props.setRunningState(true);
   }
 
   render() {
@@ -66,7 +59,7 @@ export default class StartStopButton extends Component {
         ]}
         onPress={this.handleStartStopPress.bind(this)}>
         <Text>
-          {this.state.isRunning ? "Stop" : "Start"}
+          {this.props.getRunningState() ? "Stop" : "Start"}
         </Text>
       </TouchableHighlight>
     )
