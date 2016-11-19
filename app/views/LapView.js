@@ -16,7 +16,7 @@ export default class LapView extends Component {
   render() {
     return(
       <View style={this.props.style}>
-        {this.props.lapTimes.map((lapTime, index) => <LapTime key={index} id={index} lapTime={lapTime}/>)}
+        {this.props.getLapTimes().map((lapTime, index) => <LapTime key={index} id={index} lapTime={lapTime}/>)}
       </View>
     )
   }

@@ -64,7 +64,7 @@ export default class MainView extends Component {
           getLapTimes={this.getLapTimes.bind(this)}
           />
         <LapView style={style.lapView}
-          lapTimes={this.state.lapTimes}
+          getLapTimes={this.getLapTimes.bind(this)}
           />
       </View>
     );
