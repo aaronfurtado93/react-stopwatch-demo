@@ -1,4 +1,4 @@
-package com.stopwatch;
+package com.afsoftwarestudios.stopwatch;
 
 import android.app.Application;
 import android.util.Log;
